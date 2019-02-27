@@ -11,7 +11,7 @@ import java.util.List;
  * Created by LaunchCode
  */
 @Entity
-public class Category {
+public class Menu {
     @Id
     @GeneratedValue
     private int id;
@@ -20,15 +20,19 @@ public class Category {
     @Size(min=3, max=15)
     private String name;
 
-    public Category(String name) {
+    public Menu(String name) {
         this.name = name;
     }
 
-    @OneToMany
-    @JoinColumn(name = "category_id")
+    @ManyToMany
+    @JoinColumn(name = "cheese_id")
     private List<Cheese> cheeses = new ArrayList<>();
 
-    public Category() { }
+    public Menu() { }
+
+    public void addItem(Cheese item) {
+        this.cheeses.add(item);
+    }
 
     public int getId() {
         return id;
@@ -46,8 +50,4 @@ public class Category {
         return cheeses;
     }
 
-    public void setCheeses(List<Cheese> cheeses) {
-        this.cheeses = cheeses;
-    }
 }
-

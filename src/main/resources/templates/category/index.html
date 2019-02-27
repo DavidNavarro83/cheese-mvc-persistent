@@ -15,17 +15,16 @@
 
     <tr>
         <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
     </tr>
 
     <tr th:each="category : ${categories}">
         <td th:text="${category.name}"></td>
-        <td th:text="${category.description}"></td>
-        <td th:text="${category.type.name}"></td>
+
     </tr>
 
 </table>
+
+<a href="/category/add">Add Category</a>
 
 </body>
 </html>
